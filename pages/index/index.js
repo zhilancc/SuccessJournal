@@ -284,4 +284,19 @@ Page({
       wx.setStorageSync('autoIncrementID', 6);
     }
   },
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '我正在用《成功日记Pro》来记录我的成长，超级好用！快来体验吧~', // 自定义标题
+      imageUrl: '/images/qrcode.jpg' // 自定义图片（可选，不填则截屏）
+    }
+  },
+  // 转发功能
+  onShareAppMessage() {
+    return {
+      title: '推荐给你一个超棒的成功日记小程序。',
+      path: '/pages/index/index', // 用户点击后进入的页面
+      imageUrl: '/images/qrcode.jpg'
+    }
+  }
 })
