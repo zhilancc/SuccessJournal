@@ -1,0 +1,38 @@
+/* components/swipe-delete/swipe-delete.wxss */
+.swipe-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+  margin: 26rpx 0;
+}
+.content-layer {
+  position: relative;
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 28rpx;
+}
+.action-layer {
+  width: 260rpx;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* top: 50%; */
+  /* transform:translate(0, -50%); */
+}
+.delete-btn {
+  height: 100%;
+  font-size: 28rpx;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 28rpx;
+  border-bottom-right-radius: 28rpx;
+  background-color: hsl(18, 100%, 48%);
+}
+.open {
+  transform: translateX(-260rpx) !important;
+}

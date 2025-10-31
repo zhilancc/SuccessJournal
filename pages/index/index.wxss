@@ -1,0 +1,82 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(33, 100%, 96%, 80%);
+  box-sizing: border-box;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+  margin-bottom: 170rpx;
+}
+.journal-container {
+  padding: 0 35rpx;
+}
+.journal-list {
+  width: 100%;
+}
+.journal-item {
+  margin-bottom: 42rpx;
+}
+/* 日期样式 */
+.title {
+  font-size: 1.6rem;
+  color: #a1a1a1;
+  margin-bottom: 12rpx;
+  font-family: 'Times New Roman', Times, serif;
+}
+/* 内容列表样式 */
+.content-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.content-swipe {
+  background-color: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.3);
+}
+.content-item {
+  background-color: #ffffff;
+  border-radius: 28rpx;
+  padding: 35rpx 28rpx;
+}
+.content-text {
+  color: #333;
+  display: block;
+  line-height: 1.8;
+}
+/* 底部操作区 */
+.bottom-bar {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0 50rpx 0;
+  background-color: hsl(33, 100%, 96%);
+  /* background: linear-gradient(to bottom, hsl(0, 86%, 97%, 0%), hsl(0, 86%, 97%, 80%)); */
+}
+.add-btn {
+  width: 260rpx !important;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: hsl(18, 100%, 48%);
+  color: #ffffff;
+  border-radius: 20rpx;
+  font-size: 38rpx;
+  padding: 0;
+  box-shadow: 0 6rpx 15rpx rgba(0, 0, 0, 0.3);
+}
+textarea {
+  width: auto;
+  min-height: 480rpx;
+  padding: 20rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+}

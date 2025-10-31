@@ -1,0 +1,15 @@
+<!--components/swipe-delete/swipe-delete.wxml-->
+<view class="swipe-container">
+  <view 
+    class="content-layer {{isOpen ? 'open' : ''}}"
+    bindtouchstart="handleTouchStart"
+    bindtouchmove="handleTouchMove" 
+    bindtouchend="handleTouchEnd"
+    style="transform: translateX({{translateX}}px); transition: {{transition}};"
+  >
+    <slot></slot>
+  </view>
+  <view class="action-layer" bindtap="handleDelete">
+    <view class="delete-btn">删除</view>
+  </view>
+</view>

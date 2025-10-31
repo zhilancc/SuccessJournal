@@ -1,0 +1,15 @@
+<!--components/custom-modal.wxml-->
+<view class="modal-mask" wx:if="{{show}}">
+  <view class="modal-content">
+    <view class="modal-header">
+      <text>{{title}}</text>
+    </view>
+    <view class="modal-body">
+      <slot></slot>
+    </view>
+    <view class="modal-footer">
+      <button class="btn-cancel" bindtap="onCancel">取消</button>
+      <button class="btn-confirm" bindtap="onConfirm">确认</button>
+    </view>
+  </view>
+</view>

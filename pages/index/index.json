@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "swipe-delete": "/components/swipe-delete/swipe-delete",
+    "custom-modal": "/components/custom-modal/custom-modal"
+  }
+}
