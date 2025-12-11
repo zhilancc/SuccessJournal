@@ -22,19 +22,19 @@
   </view>
 </scroll-view>
 <view class="bottom-bar" bindtap="onContainerTap">
-  <!-- <view class="dot-indicators">
-    <view class="dot active"></view>
-  </view> -->
+  <view class="icon chart-icon">
+    <text></text>
+  </view>
   <button class="add-btn" bindtap="showEditModal">
     + 记录成就
   </button>
-  <!-- <view class="star-icon">
-    <text>✨</text>
-  </view> -->
+  <view class="icon setting-icon">
+    <text></text>
+  </view>
 </view>
 <!-- 编辑弹窗 -->
 <custom-modal title="{{isEdit ? '编辑' : '记录新成就'}}" show="{{showModal}}" confirm-text="保存" cancel-text="取消" bindconfirm="onSaveJournal" bindcancel="hideEditModal">
-  <textarea placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
+  <textarea auto-focus="true" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
   <!-- <view class="modal-content">
     <view class="form-item">
       <textarea placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
