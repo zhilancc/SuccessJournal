@@ -34,7 +34,7 @@
 </view>
 <!-- 编辑弹窗 -->
 <custom-modal title="{{isEdit ? '编辑' : '记录新成就'}}" show="{{showModal}}" confirm-text="保存" cancel-text="取消" bindconfirm="onSaveJournal" bindcancel="hideEditModal">
-  <textarea auto-focus="true" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
+  <textarea auto-focus="true" focus="{{focus}}" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
   <!-- <view class="modal-content">
     <view class="form-item">
       <textarea placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>

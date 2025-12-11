@@ -28,6 +28,7 @@ Page({
     isEdit: false,
     showModal: false,
     currentOpenIndex: -1, // 当前滑动展开项的索引
+    focus: false,
   },
   onLoad() {
     // 初始化日期
@@ -82,6 +83,7 @@ Page({
   // 显示日志编辑弹窗
   showEditModal() {
     this.setData({
+      focus: true,
       showModal: true,
       isEdit: false,
       currentOpenIndex: -1
@@ -155,6 +157,7 @@ Page({
     console.log(journal)
     if (journal) {
       this.setData({
+        focus: true,
         showModal: true,
         isEdit: true,
         currentJournal: {...journal},
