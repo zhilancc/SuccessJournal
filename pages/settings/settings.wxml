@@ -1,3 +1,72 @@
 <!--pages/settings/settings.wxml-->
-<navigation-bar title="{{title}}" back="{{true}}" color="#1c1917" background="hsl(33, 100%, 96%, 80%)"></navigation-bar>
-<text>settings</text>
+<navigation-bar title="{{title}}" back="{{true}}" color="#1c1917" background="rgba(0,0,0,0)"></navigation-bar>
+
+<view class="container">
+  <!-- 头部版本信息 -->
+  <view class="header">
+    <image class="app-icon" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="app-name">成功日记Pro</text>
+    <text class="app-version">Version {{version}}</text>
+  </view>
+
+  <!-- 设置列表 -->
+  <view class="settings-list">
+    <view class="list-item" bindtap="onImport">
+      <view class="item-left">
+        <view class="icon import-icon"></view>
+        <text>导入数据</text>
+      </view>
+      <view class="arrow"></view>
+    </view>
+
+    <view class="list-item" bindtap="onExport">
+      <view class="item-left">
+        <view class="icon export-icon"></view>
+        <text>导出数据</text>
+      </view>
+      <view class="arrow"></view>
+    </view>
+
+    <view class="list-item" bindtap="onAbout">
+      <view class="item-left">
+        <view class="icon about-icon"></view>
+        <text>关于我</text>
+      </view>
+      <view class="arrow"></view>
+    </view>
+  </view>
+</view>
+
+<!-- 自定义关于弹窗 -->
+<view class="modal-mask" wx:if="{{showAbout}}" bindtap="closeAbout">
+  <view class="modal-container" catchtap="stopProp">
+    <view class="modal-title">关于成功日记Pro</view>
+
+    <scroll-view scroll-y class="modal-content">
+      <view class="section">
+        <view class="section-title">💡 灵感来源</view>
+        <text class="section-text">本小程序的灵感主要来自《小狗钱钱》中吉娅的成功日记。希望通过每天记录自己的小成就，帮助大家增强自信，培养积极的心态。</text>
+      </view>
+
+      <view class="section">
+        <view class="section-title">🛡️ 隐私声明</view>
+        <text class="section-text">我们承诺不收集您的任何数据。所有日志数据均存储在您的手机本地。</text>
+      </view>
+
+      <view class="section">
+        <view class="section-title">⚠️ 风险提示</view>
+        <text class="section-text warning">删除小程序或清理微信缓存可能会导致数据丢失！建议您定期使用“导出数据”功能备份重要日志。</text>
+      </view>
+
+      <view class="section">
+        <view class="section-title">📞 联系开发者</view>
+        <text class="section-text">如果有任何使用问题或建议，请联系作者，公众号：自在牛马。感谢您的信任与支持！</text>
+      </view>
+    </scroll-view>
+
+    <view class="modal-footer">
+      <button class="modal-btn btn-cancel" bindtap="closeAbout">关闭</button>
+      <button class="modal-btn btn-confirm" bindtap="copyOfficialAccount">复制公号</button>
+    </view>
+  </view>
+</view>
