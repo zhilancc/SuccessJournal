@@ -18,6 +18,7 @@ Page({
     today: '',
     journals: [],
     formatJournals: [],
+    scrollIntoView: '',
     currentJournal: {
       id: '',
       content: '',
@@ -30,7 +31,7 @@ Page({
     currentOpenIndex: -1, // 当前滑动展开项的索引
     focus: false,
   },
-  onLoad() {
+  onLoad(options) {
     // 初始化日期
     const today = this.formatDate(new Date());
     this.setData({
@@ -38,6 +39,9 @@ Page({
       currentDate: today,
       currentDateText: `${today.split('-').slice(1).join('-')}`
     });
+    if (options && options.date) {
+      this.jumpToDate = options.date
+    }
     this.checkFirstVisit()
     this.loadJournals()
   },
@@ -103,6 +107,18 @@ Page({
       });
     }
     console.log(this.data.currentJournal)
+  },
+  // 跳转统计页面
+  goToStats() {
+    wx.navigateTo({
+      url: '/pages/stats/stats'
+    })
+  },
+  // 跳转到设置页面
+  goToSettings() {
+    wx.navigateTo({
+      url: '/pages/settings/settings'
+    })
   },
   // 保存记录
   onSaveJournal() {
@@ -222,6 +238,13 @@ Page({
       this.setData({
         currentOpenIndex: -1
       });
+    }
+  },
+  onShow() {
+    if (this.jumpToDate) {
+      const target = `day-${this.jumpToDate}`
+      this.setData({ scrollIntoView: target })
+      this.jumpToDate = ''
     }
   },
   // 页面滚动监听（防抖函数）

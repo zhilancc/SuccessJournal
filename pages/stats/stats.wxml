@@ -1,0 +1,56 @@
+<!--pages/stats/stats.wxml-->
+<navigation-bar title="{{title}}" back="{{true}}" color="#1c1917" background="rgba(0,0,0,0)"></navigation-bar>
+
+<view class="container">
+  <!-- 顶部统计卡片 -->
+  <view class="stats-card">
+    <view class="stats-item">
+      <view class="stats-icon journal-icon"></view>
+      <text class="stats-num">{{totalCount}}</text>
+      <text class="stats-label">成就事件</text>
+    </view>
+    <view class="divider"></view>
+    <view class="stats-item">
+      <view class="stats-icon calendar-icon"></view>
+      <text class="stats-num">{{totalDays}}</text>
+      <text class="stats-label">记录天数</text>
+    </view>
+    <view class="divider"></view>
+    <view class="stats-item">
+      <view class="stats-icon word-icon">字</view>
+      <text class="stats-num">{{totalWords}}</text>
+      <text class="stats-label">总字数</text>
+    </view>
+  </view>
+
+  <!-- 日历卡片 -->
+  <view class="calendar-card" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <!-- 日历头部 -->
+    <view class="calendar-header">
+      <view class="arrow-btn left" bindtap="prevMonth"></view>
+      <text class="current-month">{{currentYear}}年 {{currentMonth < 10 ? '0' + currentMonth : currentMonth}}月</text>
+      <view class="arrow-btn right" bindtap="nextMonth"></view>
+    </view>
+
+    <!-- 星期表头 -->
+    <view class="week-header">
+      <text wx:for="{{weekDays}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <!-- 日历网格 -->
+    <view class="calendar-grid">
+      <view 
+        wx:for="{{calendarDays}}" 
+        wx:key="index" 
+        class="day-item {{item.type}} {{item.isSelected ? 'selected' : ''}} {{item.hasLog ? 'has-log' : ''}}"
+        bindtap="onDateTap"
+        data-date="{{item.dateString}}"
+        data-type="{{item.type}}"
+        data-has-log="{{item.hasLog}}"
+      >
+        <text>{{item.day}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+

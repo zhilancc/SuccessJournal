@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <navigation-bar title="" back="{{false}}" color="#1c1917" background="hsl(33, 100%, 96%, 80%)"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list" bindtap="onContainerTap" bindscroll="onScroll">
+<scroll-view class="scrollarea" scroll-y type="list" bindtap="onContainerTap" bindscroll="onScroll" scroll-into-view="{{scrollIntoView}}">
   <view class="journal-container">
     <view class="journal-list" wx:for="{{formatJournals}}" wx:for-index="idx" wx:for-item="journalData" wx:key="idx">
-      <view class="journal-item">
+      <view class="journal-item" id="{{'day-'+idx}}">
         <!-- 日期显示 -->
         <view class="title">{{idx}}</view>
         <!-- 内容列表 -->
@@ -22,13 +22,13 @@
   </view>
 </scroll-view>
 <view class="bottom-bar" bindtap="onContainerTap">
-  <view class="icon chart-icon">
+  <view class="icon chart-icon" bindtap="goToStats">
     <text></text>
   </view>
   <button class="add-btn" bindtap="showEditModal">
     + 记录成就
   </button>
-  <view class="icon setting-icon">
+  <view class="icon setting-icon" bindtap="goToSettings">
     <text></text>
   </view>
 </view>

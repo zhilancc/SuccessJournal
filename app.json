@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/user/index"
+    "pages/user/index",
+    "pages/settings/settings",
+    "pages/stats/stats"
   ],
   "window": {
     "navigationBarTextStyle": "black",

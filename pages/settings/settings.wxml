@@ -1,0 +1,3 @@
+<!--pages/settings/settings.wxml-->
+<navigation-bar title="{{title}}" back="{{true}}" color="#1c1917" background="hsl(33, 100%, 96%, 80%)"></navigation-bar>
+<text>settings</text>
