@@ -45,22 +45,22 @@
     <scroll-view scroll-y class="modal-content">
       <view class="section">
         <view class="section-title">💡 灵感来源</view>
-        <text class="section-text">本小程序的灵感主要来自《小狗钱钱》中吉娅的成功日记。希望通过每天记录自己的小成就，帮助大家增强自信，培养积极的心态。</text>
+        <text class="section-text">本小程序的灵感来自《小狗钱钱》这本书中吉娅的成功日记。希望大家能够通过每天记录自己的小成就，来培养积极的心态。</text>
       </view>
 
       <view class="section">
         <view class="section-title">🛡️ 隐私声明</view>
-        <text class="section-text">我们承诺不收集您的任何数据。所有日志数据均存储在您的手机本地。</text>
+        <text class="section-text">您的所有的日志数据全部使用本地存储，我们不会收集您的任何数据。</text>
       </view>
 
       <view class="section">
         <view class="section-title">⚠️ 风险提示</view>
-        <text class="section-text warning">删除小程序或清理微信缓存可能会导致数据丢失！建议您定期使用“导出数据”功能备份重要日志。</text>
+        <text class="section-text warning">因为所有数据采用本地存储，所以删除小程序或清理微信缓存可能会导致数据丢失！建议您定期使用“导出数据”功能备份重要日志。</text>
       </view>
 
       <view class="section">
         <view class="section-title">📞 联系开发者</view>
-        <text class="section-text">如果有任何使用问题或建议，请联系作者，公众号：自在牛马。感谢您的信任与支持！</text>
+        <text class="section-text">如果您有任何使用问题或建议，请联系开发者，公众号：自在牛马。感谢您的信任与支持！</text>
       </view>
     </scroll-view>
 
