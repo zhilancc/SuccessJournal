@@ -17,6 +17,14 @@ Page({
     showModal: false,
     currentOpenIndex: -1, // 当前滑动展开项的索引
     focus: false,
+    currentWordCount: 0,
+    templates: [
+      '今天我做到了……',
+      '我为自己感到骄傲的是……',
+      '我迈出了一小步……',
+      '让我开心的一刻是……',
+      '我正在变得更好的地方是……'
+    ],
   },
   onLoad(options) {
     // 初始化日期
@@ -74,7 +82,8 @@ Page({
       focus: true,
       showModal: true,
       isEdit: false,
-      currentOpenIndex: -1
+      currentOpenIndex: -1,
+      currentWordCount: 0
     });
   },
   // 隐藏日志编辑弹窗
@@ -83,11 +92,13 @@ Page({
       this.setData({
         showModal: false,
         isEdit: false,
-        currentJournal: {}
+        currentJournal: {},
+        focus: false
       });
     } else {
       this.setData({
-        showModal: false
+        showModal: false,
+        focus: false
       });
     }
     console.log(this.data.currentJournal)
@@ -143,7 +154,9 @@ Page({
       journals,
       formatJournals: this.formatJournals(journals),
       showModal: false,
-      currentJournal: {}
+      currentJournal: {},
+      focus: false,
+      currentWordCount: 0
     });
     wx.showToast({
       title: this.data.isEdit ? '修改成功' : '记录成功',
@@ -161,7 +174,8 @@ Page({
         showModal: true,
         isEdit: true,
         currentJournal: {...journal},
-        currentOpenIndex: -1
+        currentOpenIndex: -1,
+        currentWordCount: (journal.content || '').length
       });
     }
   },
@@ -194,8 +208,19 @@ Page({
   // 记录输入内容
   onJournalInput(e) {
     this.setData({
-      'currentJournal.content': e.detail.value
+      'currentJournal.content': e.detail.value,
+      currentWordCount: (e.detail.value || '').length
     });
+  },
+  onTemplatePick(e) {
+    const tpl = e.currentTarget.dataset.template || ''
+    const cur = this.data.currentJournal.content || ''
+    const next = cur ? `${cur}\n${tpl}` : tpl
+    this.setData({
+      'currentJournal.content': next,
+      currentWordCount: next.length,
+      focus: true
+    })
   },
   // 项目滑动展开时记录当前展开项索引
   onSwipeOpen(e) {

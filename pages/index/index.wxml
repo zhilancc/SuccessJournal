@@ -28,6 +28,12 @@
   </view>
 </view>
 <!-- 编辑弹窗 -->
-<custom-modal title="{{isEdit ? '编辑' : '记录新成就'}}" show="{{showModal}}" confirm-text="保存" cancel-text="取消" bindconfirm="onSaveJournal" bindcancel="hideEditModal">
+<custom-modal title="{{isEdit ? '编辑' : '记录新成就'}}" show="{{showModal}}" expanded="{{focus}}" bindconfirm="onSaveJournal" bindcancel="hideEditModal">
   <textarea auto-focus="true" focus="{{focus}}" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
+  <!-- <view class="editor-tools">
+    <text class="word-count">字数：{{currentWordCount}}</text>
+  </view> -->
+  <scroll-view class="template-list" scroll-x>
+    <view class="template-chip" wx:for="{{templates}}" wx:key="*this" bindtap="onTemplatePick" data-template="{{item}}">{{item}}</view>
+  </scroll-view>
 </custom-modal>
