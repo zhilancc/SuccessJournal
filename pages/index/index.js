@@ -313,7 +313,7 @@ Page({
   // 分享到朋友圈
   onShareTimeline() {
     return {
-      title: '我正在用《成功日记Pro》来记录我的成长，超级好用！快来体验吧~', // 自定义标题
+      title: '我正在使用《成功日记Pro》小程序来记录我的成长，超级好用！快来体验吧~', // 自定义标题
       imageUrl: '/images/qrcode.jpg' // 自定义图片（可选，不填则截屏）
     }
   },
