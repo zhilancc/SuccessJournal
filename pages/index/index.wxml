@@ -7,11 +7,6 @@
         <!-- 日期显示 -->
         <view class="title">{{idx}}</view>
         <!-- 内容列表 -->
-        <!-- <view class="content-list" wx:for="{{journalData}}" wx:key="id">
-          <view class="content-item" bindtap="onEditJournal" data-id="{{item.id}}">
-            <text class="content-text">{{item.content}}</text>
-          </view>
-        </view> -->
         <swipe-delete wx:for="{{journalData}}" wx:key="id" data-id="{{item.id}}" index="{{item.id}}" data-class="content-swipe" bind:delete="onDeleteJournal" bind:open="onSwipeOpen" class="content-swipe" current-open="{{currentOpenIndex}}">
           <view class="content-item" bindtap="onEditJournal" data-id="{{item.id}}" data-class="content-item">
             <text class="content-text" data-class="content-text">{{item.content}}</text>
@@ -35,9 +30,4 @@
 <!-- 编辑弹窗 -->
 <custom-modal title="{{isEdit ? '编辑' : '记录新成就'}}" show="{{showModal}}" confirm-text="保存" cancel-text="取消" bindconfirm="onSaveJournal" bindcancel="hideEditModal">
   <textarea auto-focus="true" focus="{{focus}}" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
-  <!-- <view class="modal-content">
-    <view class="form-item">
-      <textarea placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
-    </view>
-  </view> -->
 </custom-modal>

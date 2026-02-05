@@ -28,11 +28,6 @@ page {
   font-family: 'Times New Roman', Times, serif;
 }
 /* 内容列表样式 */
-.content-list {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 .content-swipe {
   background-color: #ffffff;
   border-radius: 28rpx;

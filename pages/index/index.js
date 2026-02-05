@@ -1,21 +1,8 @@
 // index.js
-// 滚动防抖函数
-function debounce(fn, delay) {
-  let timer = null;
-  return function(...args) {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      fn.apply(this, args);
-    }, delay);
-  };
-}
 Page({
   data: {
-    totalCount: 0,
     autoIncrementID: 0,
     currentDate: '',
-    currentDateText: '',
-    today: '',
     journals: [],
     formatJournals: [],
     scrollIntoView: '',
@@ -35,9 +22,7 @@ Page({
     // 初始化日期
     const today = this.formatDate(new Date());
     this.setData({
-      today,
-      currentDate: today,
-      currentDateText: `${today.split('-').slice(1).join('-')}`
+      currentDate: today
     });
     if (options && options.date) {
       this.jumpToDate = options.date
@@ -69,7 +54,6 @@ Page({
     this.setData({
       journals,
       formatJournals: this.formatJournals(journals),
-      totalCount: journals.length,
       autoIncrementID: autoIncrementID
     });
   },
@@ -197,7 +181,6 @@ Page({
           this.setData({
             journals,
             formatJournals: this.formatJournals(journals),
-            totalCount: journals.length,
             currentOpenIndex: -1
           });
           wx.showToast({
@@ -241,20 +224,13 @@ Page({
     }
   },
   onShow() {
+    this.loadJournals()
     if (this.jumpToDate) {
       const target = `day-${this.jumpToDate}`
       this.setData({ scrollIntoView: target })
       this.jumpToDate = ''
     }
   },
-  // 页面滚动监听（防抖函数）
-  // onScroll: debounce(function(options) {
-  //   if (this.data.currentOpenIndex !== -1) {
-  //     this.setData({
-  //       currentOpenIndex: -1
-  //     });
-  //   }
-  // }, 200),
   checkFirstVisit() {
     let currentDate = this.data.currentDate
     let now = this.getTimestamp()
