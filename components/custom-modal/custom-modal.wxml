@@ -1,15 +1,17 @@
 <!--components/custom-modal.wxml-->
 <view class="modal-mask" wx:if="{{show}}">
-  <view class="modal-content">
+  <view class="modal-content {{expanded ? 'expanded' : ''}}">
     <view class="modal-header">
-      <text>{{title}}</text>
+      <view class="header-left" bindtap="onCancel">
+        <view class="icon-close"></view>
+      </view>
+      <text class="header-title">{{title}}</text>
+      <view class="header-right" bindtap="onConfirm">
+        <view class="icon-check"></view>
+      </view>
     </view>
-    <view class="modal-body">
+    <view class="modal-body {{expanded ? 'expanded' : ''}}">
       <slot></slot>
-    </view>
-    <view class="modal-footer">
-      <button class="btn-cancel" bindtap="onCancel">取消</button>
-      <button class="btn-confirm" bindtap="onConfirm">确认</button>
     </view>
   </view>
 </view>

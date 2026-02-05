@@ -12,6 +12,10 @@ Component({
     title: {
       type: String,
       value: '提示'
+    },
+    expanded: {
+      type: Boolean,
+      value: false
     }
   },
 
