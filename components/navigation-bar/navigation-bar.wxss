@@ -32,14 +32,14 @@
   padding-left: var(--left);
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   height: 100%;
   box-sizing: border-box;
 }
 
 .weui-navigation-bar__btn_goback_wrapper {
   padding: 11px 18px 11px 16px;
-  margin: -11px -18px -11px -16px;
+  margin: 0 -18px 0 -16px;
 }
 
 .weui-navigation-bar__btn_goback_wrapper.weui-active {
