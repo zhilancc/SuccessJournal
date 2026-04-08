@@ -29,7 +29,7 @@
 </view>
 <!-- 编辑弹窗 -->
 <custom-modal title="{{isEdit ? '编辑' : '记录新成就'}}" show="{{showModal}}" expanded="{{focus}}" bindconfirm="onSaveJournal" bindcancel="hideEditModal">
-  <textarea auto-focus="true" focus="{{focus}}" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput"></textarea>
+  <textarea auto-focus="true" focus="{{focus}}" placeholder="每一个小成功都值得被记录^_^" value="{{currentJournal.content}}" bindinput="onJournalInput" maxlength="260"></textarea>
   <!-- <view class="editor-tools">
     <text class="word-count">字数：{{currentWordCount}}</text>
   </view> -->
