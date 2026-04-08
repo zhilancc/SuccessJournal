@@ -88,7 +88,8 @@ Page({
   },
   // 隐藏日志编辑弹窗
   hideEditModal() {
-    if (this.data.isEdit) {
+    const wasEdit = this.data.isEdit
+    if (wasEdit) {
       this.setData({
         showModal: false,
         isEdit: false,
@@ -101,7 +102,6 @@ Page({
         focus: false
       });
     }
-    console.log(this.data.currentJournal)
   },
   // 跳转统计页面
   goToStats() {
@@ -117,8 +117,9 @@ Page({
   },
   // 保存记录
   onSaveJournal() {
-    let journalContent = this.data.currentJournal.content
-    if (journalContent === null || journalContent.trim() === "") {
+    const wasEdit = this.data.isEdit
+    const journalContent = (this.data.currentJournal.content || '').trim()
+    if (!journalContent) {
       wx.showToast({
         title: '请输入内容...',
         icon: 'none',
@@ -127,12 +128,16 @@ Page({
       return;
     }
     let journals = [...this.data.journals];
-    if (this.data.isEdit) {
+    if (wasEdit) {
       // 编辑现有记录
-      const index = journals.findIndex(item => item.id === this.data.currentJournal.id);
+      const id = this.data.currentJournal.id;
+      const index = journals.findIndex(item => item.id === id)
       if (index !== -1) {
-        this.data.currentJournal.updated_at = this.getTimestamp()
-        journals[index] = this.data.currentJournal;
+        journals[index] = {
+          ...this.data.currentJournal,
+          id,
+          updated_at: this.getTimestamp()
+        }
       }
     } else {
       // 添加新记录
@@ -154,12 +159,13 @@ Page({
       journals,
       formatJournals: this.formatJournals(journals),
       showModal: false,
+      isEdit: false,
       currentJournal: {},
       focus: false,
       currentWordCount: 0
     });
     wx.showToast({
-      title: this.data.isEdit ? '修改成功' : '记录成功',
+      title: wasEdit ? '修改成功' : '记录成功',
       icon: 'success'
     });
   },
@@ -167,7 +173,6 @@ Page({
   onEditJournal(e) {
     const id = e.currentTarget.dataset.id;
     const journal = this.data.journals.find(item => item.id === id);
-    console.log(journal)
     if (journal) {
       this.setData({
         focus: true,
@@ -182,7 +187,6 @@ Page({
   // 删除记录
   onDeleteJournal(e) {
     const id = e.currentTarget.dataset.id;
-    console.log(id)
     wx.showModal({
       title: '确认删除',
       content: '确定要删除这条记录吗？',
