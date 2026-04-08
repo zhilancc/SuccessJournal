@@ -111,7 +111,14 @@ Page({
                 content: `读取到 ${content.data.length} 条记录，确定要导入吗？这将覆盖现有数据。`,
                 success: (modalRes) => {
                   if (modalRes.confirm) {
-                    wx.setStorageSync('allJournals', content.data)
+                    const imported = content.data
+                    wx.setStorageSync('allJournals', imported)
+                    // 更新自增 ID（取导入数据中的最大 ID）
+                    const maxId = imported.reduce((max, j) => {
+                      const n = Number(j.id)
+                      return Number.isFinite(n) ? Math.max(max, n) : max
+                    }, 0)
+                    wx.setStorageSync('autoIncrementID', maxId)
                     wx.showToast({ title: '导入成功', icon: 'success' })
                   }
                 }
